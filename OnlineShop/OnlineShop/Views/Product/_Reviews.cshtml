@@ -1,0 +1,50 @@
+﻿@using OnlineShop.Models.Products
+@model IEnumerable<ReviewViewModel>
+
+@*<div class="container" style="margin-bottom:5px;">*@
+    <div class="row" style="background-color: #1b5b09; height: 30px;color:white">
+        <div class=" col-lg-12 col-sm-12">
+            <div id="RCount"> <h4> Reviews(@ViewBag.Count)</h4></div>
+            <div id="count">@ViewBag.Count</div>
+        </div>
+    </div>
+    @{
+        bool chk = true;
+    }
+
+
+
+    @foreach (ReviewViewModel r in Model)
+    {
+        chk = false;
+        <div class="row" style="background-color:#f5f0f0;margin-top:3px;">
+            <div id="img" style="float: left; background-color: white; margin: 3px; border-radius: 15px; margin-right: 10px; ">
+                <img src="~/images/User-icon.png" style="height:40px;width:40px;" />
+            </div>
+            <div id="username" style="font-size: 15px; margin: 3px;font-family:Verdana;margin-top:6px;"> 
+                <div style="float:left;width:100px"> @r.UserId  </div> 
+            
+            @if (r.days.Date == DateTime.Now.Date)
+{
+    <div style="font-size:12px">   |   Today</div>
+}
+else
+{
+ <div style=" font-size: 12px; ">   |   @r.days.Day ,@r.days.ToString("MMM") @r.days.Year </div>
+}
+            
+               </div>
+            <div id="reviewText" style="margin-top:6px;margin-left:15px;font-size:15px;font-family:Verdana;color:#808080"> @r.ReviewText </div>
+        </div>
+    }
+
+    @if (chk)
+    {
+        <div class="row" style="background-color:#f5f0f0;margin-top:3px;" id="noreview">
+            There are no reviews
+        </div>
+
+    }
+
+
+   

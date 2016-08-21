@@ -1,0 +1,160 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Order> 
+@{
+    Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+    ViewBag.Title = "All Orders";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllOrders</title>
+
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+    
+</head>
+<body>
+    @{
+        int a = 0;
+    }
+
+    <div id="container">
+        <div class="shell">
+            <!-- Main -->
+            <div id="main">
+                <div class="cl">&nbsp;</div>
+
+                <!-- Content -->
+                <div id="content">
+
+                    <!-- Box -->
+                    <div class="box">
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 class="left" style="margin-right:6px;">ALL ORDERS</h2>
+                            
+                        </div>
+                        <!-- End Box Head -->
+                        <!-- Table -->
+                        <div class="table">
+                            <table style="width:100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    
+                                    <th style="text-align:center">Customer Name</th>
+                                    <th style="text-align:center">Address</th>
+                                    <th style="text-align:center">Email</th>
+                                    <th style="text-align:center">Order Date</th>
+                                    
+                                   
+                                    <th width="110" class="ac" style="text-align:center">Total Amount</th>
+                                </tr>
+
+
+
+                                @foreach (Order item in Model)
+                                {
+                                    if (a % 2 == 0)
+                                    {
+                                        <tr style="background-color:#f7e6e6;">
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(m => item.FirstName)
+                                                @Html.DisplayFor(m => item.LastName)
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Address)
+
+                                                @Html.DisplayFor(modelItem => item.City)
+
+                                                @Html.DisplayFor(modelItem => item.Country)
+
+                                                @Html.DisplayFor(modelItem => item.PostalCode)
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem =>item.OrderDate.Date )
+                                            </td>
+                                            <td style="text-align:center">
+                                              @item.Total
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    else
+                                    {
+                                        <tr style="background-color:#ffffff">
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(m => item.FirstName)
+                                                @Html.DisplayFor(m => item.LastName)
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Address)
+
+                                                @Html.DisplayFor(modelItem => item.City)
+
+                                                @Html.DisplayFor(modelItem => item.Country)
+
+                                                @Html.DisplayFor(modelItem => item.PostalCode)
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.OrderDate)
+                                            </td>
+                                            <td style="text-align:center">
+
+                                               @item.Total
+                                            </td>
+                                        </tr>
+
+
+
+                                    }
+                                    a++;
+
+                                }
+                                
+
+                            </table>
+
+
+                        </div>
+                        <!-- Table -->
+
+                    </div>
+                    <!-- End Box -->
+                    <!-- Box -->
+                    <!-- End Box -->
+
+                </div>
+                <!-- End Content -->
+                <!-- Sidebar -->
+                <!-- End Sidebar -->
+
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- Main -->
+        </div>
+    </div>
+
+    @*
+    <div id="footer">
+        <div class="shell">
+            <span class="left">&copy; 2016 - Traders</span>
+            <span class="right">
+
+            </span>
+        </div>
+    </div>
+*@
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+﻿@using Online_Shop.Application.Entities
+@model Product
+@{
+    Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+    ViewBag.Title = "Add New Product";
+    }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New Product</title>
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+
+    @*
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <link href="~/Contentts/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    
+*@
+
+    
+
+    <script type="text/javascript">
+        function show(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        };
+        function show1(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img1').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        };
+        function show2(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img2').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".buttonPrime").click(function (evt) {
+
+                if ($('#title').val() == "") {
+                    evt.preventDefault();
+                   
+                    $('#titlemsg').html("Please Enter Product title");
+                };
+
+                if ($('#description').val() == "") {
+                    evt.preventDefault();
+                    $('#descriptionmsg').html("Please Enter Product Description");
+                };
+
+                if ($('#processortype').val() == "") {
+                    evt.preventDefault();
+                    $('#processortypemsg').html("Please Enter Product Processor Type");
+                };
+
+                if ($('#ram').val() == "") {
+                    evt.preventDefault();
+                    $('#rammsg').html("Please Enter RAM Capacity");
+                };
+                if ($('#graphic').val() == "") {
+                    evt.preventDefault();
+                    $('#graphicmsg').html("Please Enter Graphic Memory");
+                };
+                if ($('#status').val() == "") {
+                    evt.preventDefault();
+                    $('#statusmsg').html("Please Enter Product Staus");
+                };
+                if ($('#price').val() == "") {
+                    evt.preventDefault();
+                    $('#pricemsg').html("Please Enter Product Price");
+                };
+                if ($('#screensize').val() == "") {
+                    evt.preventDefault();
+                    $('#screensizemsg').html("Please Enter Screen Size");
+                };
+                if ($('#harddrive').val() == "") {
+                    evt.preventDefault();
+                    $('#harddrivemsg').html("Please Enter Hard Drive Size");
+                };
+
+
+            })
+        });
+
+
+
+
+    </script>
+
+
+
+</head>
+<body>
+
+<div class="container" style="margin-top:10px;">
+
+    <div id="article">
+        <div class="workingArea">
+
+            
+
+            <div style="margin:10px;">Please Enter Product Information...!!</div>
+                        @using (Html.BeginForm("SaveProduct", "AdminPanel", FormMethod.Post, new { id = "CreatProductform", role = "form", enctype = "multipart/form-data" }))
+            {
+
+                
+                    <div class="fieldLabelWraper">
+                        <label for="title" accesskey="t" class="fieldLabel"><span class="accessKeyStyle">T</span>itle</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.Title, new { @class = "textBox;", style = "width:300px", id = "title" })
+                    </div>
+    <div style="color:red" id="titlemsg">@Html.ValidationMessageFor(m => m.Title)</div>
+                    <div style="color:red" id="stitle"></div>
+
+
+
+                    <div class="fieldLabelWraper">
+                        <label for="description" accesskey="d"><span class="accessKeyStyle">D</span>escription</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.Description, new { @class = "textBox;", style = "width:300px", id = "description" })
+                    </div>
+    <div style="color:red" id="descriptionmsg">@Html.ValidationMessageFor(m => m.Description)</div>
+
+
+
+
+                    <div class="fieldLabelWraper">
+                        <label for="processortype" accesskey="p"><span class="accessKeyStyle">P</span>rocessor Type</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.ProcessorType, new {@class = "textBox;", style = "width:300px", id = "processortype" })
+                    </div>
+    <div style="color:red" id="processortypemsg">@Html.ValidationMessageFor(m => m.ProcessorType)</div>
+
+
+                    <div class="fieldLabelWraper">
+                        <label for="ram" accesskey="r"><span class="accessKeyStyle">R</span>AM</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.RAM, new { @class = "textBox;", style = "width:300px", id = "ram"})
+                    </div>
+    <div style="color:red" id="rammsg">@Html.ValidationMessageFor(m => m.RAM)</div>
+
+
+                    <div class="fieldLabelWraper">
+                        <label for="category" accesskey="c"><span class="accessKeyStyle">C</span>ategory</label>
+                    </div>
+
+                    <div class="fieldControlWraper">
+                                      @Html.DropDownListFor(
+                          m => m.categoryId,
+                         @ViewBag.CategoryList as List<SelectListItem>, 
+                          new { @class="dropdownList", style = "width:25%;", id="categoryId" })
+                </div>
+
+                <div style="color:red">@Html.ValidationMessageFor(m => m.categoryId)</div>
+                                 <div class="fieldLabelWraper">
+                                        <label for="harddrive" accesskey="h"><span class="accessKeyStyle">O</span>perating System</label>
+                                    </div>
+                                   <div class="fieldControlWraper">
+                                        @Html.DropDownListFor(
+                                             m => m.OperatingSystem,
+                                             @ViewBag.OperatingSystem as List<SelectListItem>,
+                                             new { @class="dropdownList", style = "width:25%;" })
+                                    </div>
+                                    <div style="color:red">@Html.ValidationMessageFor(m => m.OperatingSystem)</div>
+                            
+                                 <div class="fieldLabelWraper">
+                                        <label for="webcam"><span class="accessKeyStyle">W</span>ebCam</label>
+                                    </div>
+                                    <div class="fieldControlWraper">
+                                        @Html.DropDownListFor(
+                                               m => m.WebCam,
+                                               @ViewBag.webcam as List<SelectListItem>,
+                                             new { @class="dropdownList", style = "width:25%;" })
+                                    </div>
+                                    <div style="color:red">@Html.ValidationMessageFor(m => m.WebCam)</div>
+
+                    <div class="fieldLabelWraper">
+                        <label for="dedicatedgraphics"><span class="accessKeyStyle">D</span>edicated Graphic Memory</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.DedicatedGraphicMemory, new { @class = "textBox;", style = "width:300px", id = "graphic" })
+                    </div>
+    <div style="color:red" id="graphicmsg">@Html.ValidationMessageFor(m => m.DedicatedGraphicMemory)</div>
+
+                    <div class="fieldLabelWraper">
+                        <label for="harddrive" accesskey="h"><span class="accessKeyStyle">H</span>ard Drive</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.HardDrive, new { @class = "textBox;", style = "width:300px", id = "harddrive" })
+                    </div>
+    <div style="color:red" id="harddrivemsg" id="harddrivemsg">@Html.ValidationMessageFor(m => m.HardDrive)</div>
+                    <div class="fieldLabelWraper">
+                        <label for="screensize"><span class="accessKeyStyle">S</span>creenSize</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.ScreenSize, new { @class = "textBox;", style = "width:300px", id = "screensize" })
+                    </div>
+    <div style="color:red" id="screensizemsg">@Html.ValidationMessageFor(m => m.ScreenSize)</div>
+
+                    <div class="fieldLabelWraper">
+                        <label for="screensize"><span class="accessKeyStyle">P</span>rice</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.Price, new { @class = "textBox;", style = "width:300px", id = "price" })
+                    </div>
+    <div style="color:red" id="pricemsg">@Html.ValidationMessageFor(m => m.Price)</div>
+
+                    <div class="fieldLabelWraper">
+                        <label for="screensize"><span class="accessKeyStyle">S</span>tatus</label>
+                    </div>
+                    <div class="fieldControlWraper">
+                        @Html.TextBoxFor(m => m.Status, new { @class = "textBox;", style = "width:300px", id = "status" })
+                    </div>
+    <div style="color:red" id="statusmsg">@Html.ValidationMessageFor(m => m.Status)</div>
+
+                    <div class="fieldLabelWraper">
+                        <label for="images"><span class="accessKeyStyle">I</span>mages</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2" style="float:left">
+                            <div style="height: 120px; width: 100px; ">
+                                <img id="user_img"
+                                     height="100"
+                                     width="90" />
+                            </div>
+                            <input type="file" name="photo1" onchange="show(this)" />
+                        </div>
+
+                        <div class="col-lg-2" style="float:left">
+                            <div style=" height :120px; width: 100px;  ">
+                                <img id=" user_img1"
+                                     height="100"
+                                     width="90" />
+                            </div>
+                            <input type="file" name="photo2" onchange="show1(this)" />
+                        </div>
+
+                        <div class="col-lg-2">
+                            <div style="height: 120px; width: 100px; ">
+                                <img id="user_img2"
+                                     height="100"
+                                     width="90" />
+                            </div>
+                            <input type="file" name="photo3" onchange="show2(this)" />
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <input type="submit" value="SaveProduct" name="BtnSubmit" class="buttonPrime" />
+
+                        <input type="button" value="Reset" name="BtnReset" onclick="Reset()" class="buttonPrime" />
+
+                        <input type="submit" value="Cancel" name="BtnSubmit" class="buttonPrime" />
+                    </div>
+            }
+</div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

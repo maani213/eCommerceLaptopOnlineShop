@@ -1,0 +1,125 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin_Panel_Index</title>
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <script src="~/Contentts/Scripts/bootstrap.min.js"></script>
+    <link href="~/Contentts/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.min.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+
+    <link href="~/Contentts/CSS/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container" style="width: 980px; border: thin thick; margin-bottom: 20px;">
+        @{
+            int a = 0;
+        }
+        <div class="row" style="background-color:#b29d9d;padding-top:10px;padding-bottom:10px; margin-bottom:10px;">
+            <div class="col-lg-2">@Html.ActionLink("ADD New Product", "AddNewProduct", "Product", null, new { style = "color:Black" })</div>
+            <div class="col-lg-2">@Html.ActionLink("HOME PAGE", "Index", "Product", null, new { style = "color:Black" })</div>
+            <div class="col-lg-2">@Html.ActionLink("REGISTERED USERS", "AllUsers", "Users", null, new { style = "color:Black" })</div>
+            <div class="col-lg-2">@Html.ActionLink("LOGOUT", "LogOut", "Authentication", null, new { style = "color:Black" })</div>
+        </div>
+        <table class="table">
+            <thead style="background-color:#282637;color:white">
+                <tr>
+                    <th style="width:32px;"></th>
+                    <th style="text-align:center;border-color:white;border-left:double thin">
+                        Description
+                    </th>
+                    <th style="text-align: center; border-left-color: white; border-left: double thin; ">
+                        Processor Type
+                    </th>
+                    <th style="text-align: center; border-left-color: white; border-left: double thin; ">
+                        RAM
+                    </th>
+                    <th style="text-align: center; border-left-color: white; border-left: double thin; ">
+                        Price
+                    </th>
+                    <th style="text-align: center; border-left-color: white; border-left: double thin; "></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Product item in Model)
+                {
+                    if (a % 2 == 0)
+                    {
+                        <tr style="background-color:#f7e6e6;">
+                            <td style="text-align:center">
+                                @foreach (var img in item.ImgUrls)
+                                {
+                                    <img src=@Url.Content(img) style="height:30px;width:30px;" />
+                                    break;
+                                }
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(m => item.Title)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.ProcessorType)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.RAM)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.ActionLink("Edit", "Edit", "ProductsManagment", new { id = item.Id }, null) |
+                                @Html.ActionLink("Details", "Details", "ProductsManagment", new { id = item.Id }, null) |
+                                @Html.ActionLink("Delete", "Delete", "ProductsManagment", new { id = item.Id }, null)
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr style="background-color:#ffffff">
+
+                            <td style="text-align:center">
+                                @foreach (var img in item.ImgUrls)
+                                {
+                                    <img src=@Url.Content(img) style="height:30px;width:30px;" />
+                                    break;
+                                }
+                            </td>
+
+                            <td style="text-align:center">
+                                @Html.DisplayFor(m => item.Title)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.ProcessorType)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.RAM)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.ActionLink("Edit", "Edit", "ProductsManagment", new { id = item.Id }, null) |
+                                @Html.ActionLink("Details", "Details", "ProductsManagment", new { id = item.Id }, null) |
+                                @Html.ActionLink("Delete", "Delete", "ProductsManagment", new { id = item.Id }, null)
+                            </td>
+                        </tr>
+                    }
+
+                    a++;
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

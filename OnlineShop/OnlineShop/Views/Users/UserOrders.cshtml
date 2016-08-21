@@ -1,0 +1,81 @@
+﻿@using OnlineShop.ViewModels.User
+@model IEnumerable<UserOrderViewModel>
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "My Orders";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserOrders</title>
+
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+
+        <h4>Orders</h4>
+        
+         <div class="table" style="margin-bottom:150px;">
+            <table style="width:100%" border="0" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#080714;color:white;height:30px;">
+
+                    <th style="text-align:center">Customer Name</th>
+                    <th style="text-align:center">Address</th>
+                    <th style="text-align:center">Email</th>
+                    <th style="text-align:center">Order Date</th>
+
+
+                    <th width="110" class="ac" style="text-align:center">Total Amount</th>
+                </tr>
+
+
+                @{
+                    bool chk = true;   
+                }
+                @foreach (UserOrderViewModel item in Model)
+                                {
+                                    chk = false;
+                    
+                                       <tr style="background-color:#f7e6e6;height:30px;font-family:Verdana">
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(m => item.Name)
+                                               
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Address)
+
+                                               
+                                            </td>
+
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td style="text-align:center">
+                                                @Html.DisplayFor(modelItem =>item.OrderDate.Date )
+                                            </td>
+                                            <td style="text-align:center">
+                                                @item.Total
+                                            </td>
+                                        </tr>
+
+                }
+                </table>
+
+             @if (chk)
+             {
+                 Html.RenderPartial("~/Views/Users/_NoOrder.cshtml");
+             }
+
+             </div>
+                                </div>
+</body>
+</html>

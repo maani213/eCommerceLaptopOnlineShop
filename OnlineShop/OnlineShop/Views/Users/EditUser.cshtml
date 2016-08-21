@@ -1,0 +1,152 @@
+﻿@model Online_Shop.Application.Entities.UserDetail
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "Edit Account";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <script src="~/Contentts/Scripts/jquery-2.1.4.intellisense.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("EditUser", "Users", FormMethod.Post, new { id = "CreatUser", role = "form", enctype = "multipart/form-data", style = "margin-bottom:20px;" }))
+        {
+
+            <div style="float:left;width:49%;margin-right:10px;">
+                <h3>Personla details</h3>
+                <div style="width:100%">
+                    <div class="form-group" style="float:left">
+                        <div accesskey="f"><span class="accessKeyStyle">F</span>irst Name</div>
+                        @Html.TextBoxFor(m => m.FName, new {@class="form-control", style = "width:97%;margin-right:6px;", id = "fname" })<div style="color:red;" id="fn"></div>
+                        <div style="color:red">@Html.ValidationMessageFor(m => m.FName)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div accesskey="l"><span class="accessKeyStyle">L</span>ast Name</div>
+                        @Html.TextBoxFor(m => m.LName, new { @class = "form-control", style = "width:40%;", id = "lname" })<div style="color:red;" id="ln"></div>
+                        <div style="color:red">@Html.ValidationMessageFor(m => m.LName)</div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="e"><span class="accessKeyStyle">E</span>mail</div>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "width:80%;", id = "email" })<div style="color:red;" id="e"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Email)</div>
+
+                </div>
+                <div>@Html.HiddenFor(m => m.Id)</div>
+
+                <div style="width:100%">
+
+
+                </div>
+                <div class="form-group">
+                    <div accesskey="d"><span class="accessKeyStyle">D</span>ate of Birth</div>
+                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", style = "width:80%;", id = "dob" })<div style="color:red;" id="date"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.DOB)</div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <div accesskey="c"><span class="accessKeyStyle">C</span>ontact</div>
+                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control", style = "width:80%;", id = "contact" })<div style="color:red;" id="c"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Contact)</div>
+
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="g"><span class="accessKeyStyle">G</span>ender</div>
+                    <div>
+                        @Html.RadioButtonFor(m => m.Gender, "Male", "Male")<label>Male</label>
+                        @Html.RadioButtonFor(m => m.Gender, "Femal", "Female")<label>Female</label>
+                        @Html.RadioButtonFor(m => m.Gender, "others", "others")<label>others</label>
+                    </div>
+
+                </div>
+
+
+                <div > @Html.HiddenFor(m=>m.imgUrl)</div>
+                
+</div>
+            <div style="margin-left:10px;float:left;">
+                <h3>Account details</h3>
+
+                <div style="width:100%">
+                    <div class="form-group" style="float:left">
+                        <div accesskey="u"><span class="accessKeyStyle">U</span>ser Name</div>
+                        @Html.TextBoxFor(m => m.UserId, new { @class = "form-control", style = "width:97%", id = "uname", value = "null" })<div style="color:red;" id="un"></div>
+                        <div style="color:red">@Html.ValidationMessageFor(m => m.UserId)</div>
+
+                    </div>
+
+                    <div class="form-group" style="float:right">
+                        <div accesskey="p"><span class="accessKeyStyle">P</span>assword</div>
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", style = "width:97%", id = "password", value = "null" })<div style="color:red;" id="p"></div>
+                        <div style="color:red">@Html.ValidationMessageFor(m => m.Password)</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="s"><span class="accessKeyStyle">S</span>ecurity Question</div>
+                    @Html.TextBoxFor(m => m.SecQuest, new { @class = "form-control", style = "width:99%;", id = "s" })<div style="color:red;" id="sq"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.SecQuest)</div>
+
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="a"><span class="accessKeyStyle">A</span>nswer</div>
+                    @Html.TextBoxFor(m => m.Answer, new { @class = "form-control", style = "width:99%;", id = "answer" })<div style="color:red;" id="a"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Answer)</div>
+
+                </div>
+
+                <h3>Your Address</h3>
+                <div class="form-group">
+                    <div accesskey="u"><span class="accessKeyStyle">A</span>ddress</div>
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", style = "", id = "uname", value = "null" })<div style="color:red;" id="un"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Address)</div>
+
+                </div>
+                <div class="form-group">
+                    <div accesskey="u"><span class="accessKeyStyle">C</span>ountry</div>
+                    @Html.TextBoxFor(m => m.country, new { @class = "form-control", style = "", id = "uname", value = "null" })<div style="color:red;" id="un"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.country)</div>
+
+                </div>
+                <div class="form-group">
+                    <div accesskey="u"><span class="accessKeyStyle">C</span>ity</div>
+                    @Html.TextBoxFor(m => m.city, new { @class = "form-control", style = "", id = "uname", value = "null" })<div style="color:red;" id="un"></div>
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.city)</div>
+
+                </div>
+                <div class="feildwraper" style="float:left">
+                    <input type="submit" value="Save" class="btn btn-danger" style="margin-top:0px;" />
+                    <button class="btn btn-danger"> @Html.ActionLink("Cancel", "UserAccount", "Authentication", null) </button>
+                </div>
+            </div>
+
+
+           
+                
+        }
+    </div>
+
+
+
+</body>
+</html>

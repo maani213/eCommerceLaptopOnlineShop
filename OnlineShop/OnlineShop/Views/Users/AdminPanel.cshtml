@@ -1,0 +1,57 @@
+﻿@using OnlineShop.ViewModels.User
+@model UserListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Users</title>
+
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            
+                @Html.ActionLink("Back to Admin Panel", "ProductGrid", "Product", null, new { style = "color:black" })
+            
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>User Name</th>
+
+                        </tr>
+                    </thead>
+                    @foreach (UserViewModel mdl in Model.users)
+                    {
+                        <tr>
+                            <td></td>
+                             <td><div style="color:#ffffff; font-family:Verdana; font-size:medium;">@mdl.FName &nbsp; @mdl.LName</div></td>
+                            <td>@mdl.Password</td>
+                            <td>@mdl.Email</td>
+                            <td>@mdl.UserId</td>
+
+                        </tr>
+
+                    }
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

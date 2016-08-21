@@ -1,0 +1,55 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<UserDetail>
+
+@{
+    Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+    ViewBag.Title = "All Users";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Users</title>
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+   
+
+</head>
+<body>
+    <div class="container">
+        <div>
+
+            @Html.ActionLink("Back to Admin Panel", "AdminPanel", "Admin", null, new { style = "color:black" })
+
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>User Name</th>
+
+                        </tr>
+                    </thead>
+                    @foreach (UserDetail mdl in Model)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@mdl.FName &nbsp; @mdl.LName</td>
+                            <td>@mdl.Password</td>
+                            <td>@mdl.Email</td>
+                            <td>@mdl.UserId</td>
+
+                        </tr>
+
+                    }
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿@using OnlineShop.Models.ShopingCart
+@model ShoppingCartViewModel
+@{
+    Layout ="~/Views/Shared/MyLayout2.cshtml";
+    ViewBag.Title = "Shopping Cart";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Microsoft.jQuery.Unobtrusive.Ajax.2.0.30506.0/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function processData(data) {
+            $('#cart-total').html(data.CartTotal);
+            $('#idd-'+data.DeleteId).html(data.CartCount);//= data.CartTotal;
+            if (data.CartCount == 0)
+            {
+                $('#row-' + data.DeleteId).fadeOut('slow');
+            }
+            
+            }
+      
+    </script>
+
+        
+
+
+</head>
+<body>
+
+    <div class="container" style="width:980px;">
+
+    </div>
+    <div class="container" style="width:980px;margin-bottom:100px;">
+        <h3><em>Review</em> your cart: </h3>
+
+        <p class="buttonNormal">
+            @Html.ActionLink("Checkout >>", "AddressAndpayment", "Checkout")
+        </p>
+      
+        <div id="Update-message" style="color:#1d870c;margin:5px;"></div>
+        <table class="table table-bordered" id="productsTable">
+            <thead style="background-color:#18252a;color:white">
+                <tr>
+                    <td style="text-align:center">Product</td>
+                    <td style="text-align:center">Quantity</td>
+                    <td style="text-align:center">Price(each)</td>
+                    <td style="text-align:center"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="row-@item.RecordId">
+                        <td style="text-align:center">@Html.ActionLink(@item.product.Title, "Details", "ProductsManagment", new { id = @item.ProductId }, null) </td>
+                        <td style="text-align:center" id="idd-@item.RecordId">@item.Count</td>
+                        <td style="text-align:center">@item.product.Price</td>
+                        <td style="text-align:center">
+                            @Ajax.ActionLink(linkText: "Remove from Cart",
+                            actionName: "RemoveFromCart",
+                            controllerName: "ShoppingCart",routeValues: new{id=item.RecordId},
+                         ajaxOptions: new AjaxOptions { HttpMethod = "post", UpdateTargetId = "Update-message", OnSuccess = "processData" }, htmlAttributes: new { @class = "btn" })
+                           
+                            </td>
+                        </tr>
+                    }
+                    <tr style="margin-bottom: 70px;">
+                        <td style="border-right:none" id="cartTotal"><b> Total</b></td>
+                        <td style="border-left:none;border-right:none"></td>
+                        <td style="border-left:none;border-right:none"></td>
+                        <td id="cart-total">@Model.CartTotal</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row-">
+
+            </div>
+
+        </div >
+        <div class="modal" id="exampleModal" tabindex="1000" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        </div>
+
+
+    </body>
+    </html>

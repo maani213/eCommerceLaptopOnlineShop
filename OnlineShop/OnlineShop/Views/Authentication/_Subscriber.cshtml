@@ -1,0 +1,9 @@
+﻿@*@using Online_Shop.Application.Entities
+@model Subscribers*@
+<div>
+    @using(Html.BeginForm("AddSubscriber", "Authentication", FormMethod.Post, new {role="form" }))
+    {
+       @Html.TextBox("email",null, new { @class = "subs", placeholder = "Enter your Email" })
+    <input type="submit" class="btn btn-danger" value="Submit" />
+    }
+</div>

@@ -1,0 +1,14 @@
+﻿
+@*@model OnlineShop.Models.Products.SearchProductModel*@
+
+
+@using (Html.BeginForm("SearchProd", "Product", FormMethod.Post, new { role = "form" }))
+{
+    <div  style=" float:left">
+    @Html.TextBox("Query", null, new { @class = "form-control", @value="",style = "width:110%;height:30px;" ,@placeholder="enter your search..."})</div>
+    <div>
+        <input type="submit" value="" style="margin-left: -12px; background: url(../images/toolbar_find.png); width: 20px; height: 19px; border: 0px; margin-top: 2px; " />
+    </div>
+
+}
+

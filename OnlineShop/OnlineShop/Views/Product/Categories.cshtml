@@ -1,0 +1,85 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Product>
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Category</title>
+
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <div class="container" style="width: 980px; border: thin thick; margin-bottom: 30px;">
+
+        <h3>Category</h3>
+        <div style="float:left;width:80%;">
+            <div class="row" style="margin-bottom:10px;">
+                @foreach (Product item in Model)
+                {
+                    <div class="col-lg-4 col-md-3 col-sm-6 split1" style="margin-bottom:10px;">
+                        <div class="content1">
+                            <div style="border-bottom: double thin; border-color: #f2e8e8; padding: 2px; height: 40%;">
+                                @{
+                    foreach (var i in item.ImgUrls)
+                    {
+                        <img src=@Url.Content(i) class="imgsize" />
+                        break;
+                    }
+                                }
+                            </div>
+
+                            <div class="title">
+                                Laptop
+                            </div>
+                            <div class="specs">
+                                @Html.ActionLink(@item.Title, "Details", "ProductsManagment", new { id = item.Id }, new { style = "color:black;" })<br />
+                                @item.ProcessorType @item.RAM @item.HardDrive
+
+                                <div style="align-items:center">@item.ScreenSize</div>
+                            </div>
+                            <div class="price" id=@item.Id>
+                                RS @item.Price
+                            </div>
+                            @*<div class="addcart btn btn-danger">
+
+                                @*Ajax.ActionLink("AD TO CART", "AddToCart", "ShoppingCart", new { id = item.Id }, null, new AjaxOptions { OnSuccess = "handleUpdate"})*@
+                            @*<button class="addcart btn btn-danger"></button>*@
+                            @Html.ActionLink("ADD TO CART", "AddToCart", "ShoppingCart", new { id = item.Id }, new { style = "color:white", @class = "addcart btn btn-danger" })
+
+                            @*</div>*@
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+        <div style="float:right;width:20%;">
+            <div class="catLinks" style="border-bottom:none; padding-top: 3px; background-color:white;color:#4f4a4a;"><h4>CATEGORIES</h4></div>
+            <div style="width:auto;border-right:double thin;border-bottom:double thin;border-color:#f2e8e8;">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="catLinks">@Html.ActionLink("DELL", "Categories", "Product", new { id = 1 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("HP", "Categories", "Product", new { id = 2 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("APPLE", "Categories", "Product", new { id = 3 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("ACER", "Categories", "Product", new { id = 4 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("LENOVO", "Categories", "Product", new { id = 5 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("SAMSUNG", "Categories", "Product", new { id = 6 }, new { style = "color:#b99a9a;" })</li>
+                    <li class="catLinks">@Html.ActionLink("ASUS", "Categories", "Product", new { id = 7 }, new { style = "color:#b99a9a;" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

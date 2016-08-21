@@ -1,0 +1,33 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Category>
+@{
+     Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+     ViewBag.Title = "All Categories";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowAllCategories</title>
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+   
+
+</head>
+<body>
+    
+    
+    <div class="container"> 
+        <div style="margin:4px;">
+            <ul>
+                @foreach (Category c in Model)
+                {
+                    <li style="color:#808080;font-size:15px;"> @c.Title </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

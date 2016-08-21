@@ -1,0 +1,310 @@
+﻿
+
+
+
+body {
+    padding:0px;
+    margin:0px;
+    font-family:Verdana, Arial, 'Times New Roman';
+    font-size:12px;
+    color:#0d0c0c;
+
+
+}
+
+h1 {
+    padding:5px 0px;
+    margin:0px;
+    font-size:130%;
+    font-weight:normal;
+}
+
+h2 {
+
+}
+
+
+fieldset{
+    border:solid 1px #6d1515;
+}
+
+legend{
+    color:#6d1515;
+}
+
+
+/*************** Main Layout*************************/
+
+ .headerOuter {
+
+ }
+
+ .headerInner {
+     background-color:#6d1515;
+     color:#ffffff;
+     padding:10px 0px 10px 0px;
+ }
+
+.headerInner a{
+    color:#ffffff;
+}
+
+
+
+ .appTitleSec{
+     width:600px;
+     float:left;
+ }
+
+.loginStatusSec {
+     width:380px;
+     float:left;
+     text-align:right;
+}
+
+
+ .workingArea{
+     width:980px;
+     margin:auto;
+ }
+
+
+
+ .footerOuter {
+
+ }
+
+ .footerInner {
+     background-color:#6d1515;
+     color:#ffffff;
+     padding:10px 0px 10px 0px;
+ }
+
+.footerInner a{
+    color:#ffffff;
+}
+
+.fAboutSec{
+    width:330px;
+    float:left;
+}
+
+.fSubscribeSec{
+    width:325px;
+    float:left;
+}
+
+
+.fAddressSec{
+    width:325px;
+    float:left;
+}
+
+#emailLabel{
+    color:#ffffff;
+}
+
+
+
+ /*****************Common Style*********************/
+
+.clearSec {
+    clear:both;
+}
+
+.errorText{
+    color:#ff0000;
+}
+
+.dialogSec {
+    display:none;
+}
+
+
+/***************Styles for Foms & Controls**********************/
+
+.fieldLabelWraper{
+    padding:0px;
+    margin:0px 0px 2px 0px;
+}
+
+.fieldLabel{
+    color:#6d1515;
+}
+
+.fieldControlWraper{
+    padding:0px;
+    margin:0px 0px 5px 0px;
+}
+
+.textBox{
+    padding:2px;
+    border:solid 1px #6d1515;
+    color:#6d1515;
+}
+
+
+.errorTextBox{
+    padding:2px;
+    border:solid 1px #ff0000;
+    color:#ff0000;
+}
+
+
+
+.dropdownList{
+    padding:2px;
+    border:solid 1px #6d1515;
+    color:#6d1515;
+}
+
+
+.buttonPrime {
+    padding:5px;
+    border:solid 1px #6d1515;
+    background-color: #6d1515;
+    color:#ffffff;
+}
+
+.buttonNormal {
+    padding:5px;
+    border:solid 1px #6d1515;
+    background-color: #ffffff;
+    color:#6d1515;
+}
+
+.accessKeyStyle{
+    text-decoration:underline;
+}
+
+
+
+/********Product Details*******************/
+
+
+.productDetails {
+    width: 500px;
+    background-color: #E6E6E6;
+    padding: 20px;
+    float:left;
+}
+.pdBasicsSec {
+    padding:10px 0px 10px 10px;
+    width:240px;
+    float:left;
+}
+
+.pdImagesSec {
+    padding:10px;
+    width:200px;
+    float:left;
+}
+
+.pdFeaturesSec {
+
+}
+
+.pdName {
+    margin-bottom:10px;
+}
+
+.pdName h2 {
+    padding:0px;
+    margin:0px;
+    color: #CC3300;
+    font-size: 120%;
+}
+
+.pdDescription {
+    padding:0px;
+    margin-bottom:10px;
+    width:240px;
+    height:180px;
+    text-align:justify;
+    overflow:auto;    
+}
+
+.pdPrice {
+       font-size: 110%;
+}
+
+.imgPrvSec {
+    margin-top:10px;
+    width:200px;
+}
+
+.imgPrvMainImageWraper {
+    width:200px;
+}
+
+.imgPrvMainImage {
+     width:192px;
+     height:200px;
+}
+
+.imgPrvThumbnailWraper {
+    width:40px;
+    height:40px;
+    padding:2px;
+    border: 1px solid #CCCCCC;
+    float:left;
+    margin:1px;
+}
+.imgPrvThumbnail { 
+    width: 40px;
+    height: 40px;
+}
+
+
+/******************Styles for Status update and comments*************************/
+.statusSec {    
+    padding:20px;
+    background-color: #FFFFCC;
+    margin-bottom:1px;
+}
+
+.statusWraper {
+   
+}
+
+.commentLinkWraper {
+    
+}
+
+
+.commentsSec {
+    padding:10px 20px;
+    background-color: #FFE6FF;
+}
+.commentWraper {
+    padding:5px 0px;
+}
+.commentInputSec {
+    padding: 5px 0px 0px 0px;
+}
+
+.commentInputWraper {
+    background-color:#E6E6E6;
+    position:absolute;
+    width:500px;
+    padding: 25px;
+}
+
+.commentImage {
+    width: 30px;
+    height:30px;
+
+}
+
+.commentImageWraper{
+    width: 30px;
+    padding:5px;
+    border: solid 1px #CCCCCC;    
+    float:left;
+}
+commentTextWraper{
+    margin: 0px 5px;
+}
+
+
+

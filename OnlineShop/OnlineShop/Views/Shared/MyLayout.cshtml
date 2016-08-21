@@ -1,0 +1,161 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+
+    
+
+    @section Scripts{
+    <link href="contents/Content/bootstrap.css" rel="stylesheet" />
+    <script src="contents/Scripts/bootstrap.js"></script>
+    <script src="~/Contentts/Scripts/jquery-2.1.4.min.js"></script>
+        }
+</head>
+<body>
+    <div class="container" style="margin-bottom: 8px;">
+        <div class="row" style="padding:0px; margin-top:8px;margin-bottom:10px;">
+            <div class="col-lg-6 col-sm-6" style="float: left">
+                <img src="~/images/Hs-logo-2.png" style="height: 37px; float: left;" />
+                <div style="float:left;font-size:15px;margin-left:10px;">
+                    <p style="color:#e8d6d6;">feel the difference</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div style="float: right; background-color: #f56b6b; padding: 0px; border-radius: 9px; height: auto; width: auto;">
+                    <p style="color:white;float:right;font-size:18px">
+                        <div style="float: right; margin: 7px;">
+                            @{
+                                Html.RenderAction("Name", "Authentication");
+                            }
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-left:-32px">
+            <div class="row">
+                <div style="float:left;width:40%">
+                    <ul class="nav nav-pills" style="margin-left:30px;">
+                        <li style="margin-left:10px;"> @Html.ActionLink("Home", "Index", "Product", null, new { style = "color:#645a5a; font-size:15px;" })</li>
+                        <li style="margin-left:10px;">@Html.ActionLink("Products", "AllProducts", "Product", null, new { style = "color:#645a5a; font-size:15px;" })</li>
+                        <li style="margin-left:10px;">@Html.ActionLink("Contact", "Contact", "Product", null, new { style = "color:#645a5a; font-size:15px;" })</li>
+                        
+                    </ul>
+                </div>
+                <div style="float: left; width: 25%">
+                    @{
+                        Html.RenderPartial("~/Views/Product/_ProductSearch.cshtml");
+    //Html.RenderAction("SearchProd1", "Product");
+
+                    }
+                </div>
+
+                <div style="float:right;height:30px;width:33%;">
+
+                    <div style="float: right; margin: 2px; background-color: #645a5a; padding: 5px; border-radius: 6px; ">
+
+                        <div style="color:white;" id="summary" >
+                            @{
+                                Html.RenderAction("CartSummary", "ShoppingCart");
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div>
+                    @{
+                        Html.RenderAction("admin", "AdminPanel");
+                    }
+                </div>*@
+        </div>
+    </div>
+    <div class="container" style="margin-bottom:0px;">
+        <div class="row">
+            <div style="float:right">
+
+                <ul class="nav nav-pills" style="margin-left:30px;">
+                   <li>
+                       @{
+                           Html.RenderAction("AdminLink", "Product");
+                       }
+    </li>  
+                    <li> @Html.ActionLink("My Account", "UserAccount", "Authentication", new {returnUrl=Request.RawUrl }, new { style = "color:#645a5a;" })</li>
+                    @*<li style="margin-right: 2px;"> <img src="~/images/download.png" height="25" width="25" style="float:right" /></li>*@
+                    <li>
+                        <a href="@Url.Action("Index", "ShoppingCart")" title="Widget View" class="links" style="color:#645a5a;">
+                            <img alt="Widget View" height="25" width="25" src="@Url.Content("~/images/download.png") " style="margin-right:3px;">
+                            Shopping Cart
+                        </a>
+                    </li>   
+                    
+                    @*<li style="margin-left:2px;">    @Html.ActionLink("Shopping Cart", "Index", "ShoppingCart", null, new { style = "color:#645a5a;" })</li>*@
+                    <li> @Html.ActionLink("Check Out", "AddressAndPayment", "CheckOut", null, new { style = "color:#645a5a;" })</li>
+                                
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    <hr />
+    <div class="container " style="margin-bottom: 20px;margin-top:10px;">
+    
+        @RenderBody()
+    
+   <hr />
+
+        <div class="container" style="border: thin thick; margin-bottom: 20px;margin-top:20px;">
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <b>Twitter Updates</b>
+                    <p style="margin:5px;">
+                        Check out this great #themeforest item for you 'Simpler Landing' http://t.co/LbLwldb6 2 hours ago
+                    </p>
+                    <hr />
+                </div>
+                <div class="col-lg-4">
+                    <b>News Letter Sign Up</b>
+                    <p style="margin:5px;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <hr />
+                    <div>
+                        Subscribe Now:
+                    </div>
+                   @{
+                       Html.RenderPartial("~/Views/Authentication/_Subscriber.cshtml");
+                   }
+                  
+                </div>
+                <div class="col-lg-4">
+                    <b>Shopping</b>
+                    
+                    <p id="check">
+                        +387 123 456<br /> +387 123 456
+                        <br />
+                        +387 123 456
+                    </p><hr />
+                    <p>
+                        +387-123-456-1<br />
+                        +387-123-456-2
+                    </p><hr />
+                    <p>
+                        your@email.com<br />
+                        customer.care@mail.com
+                    </p>
+                </div>
+            </div>
+
+            <hr />
+        </div>
+        </div>
+
+
+  
+</body>
+</html>
+
+
+

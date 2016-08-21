@@ -1,0 +1,157 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Product>
+@{
+    Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+    ViewBag.Title = "Admin Panel";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Panel</title>
+   
+
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container" style="width: 980px; border: thin thick; margin-bottom: 20px;">
+        @{
+    int a = 0;
+        }
+           
+                   <div id="container">
+            <div class="shell">
+                <!-- Main -->
+                <div id="main">
+                    <div class="cl">&nbsp;</div>
+
+                    <!-- Content -->
+                    <div id="content">
+
+                        <!-- Box -->
+                        <div class="box">
+                            <!-- Box Head -->
+                            <div class="box-head">
+                                <h2 class="left" style="margin-right:6px;">ALL PRODUCTS</h2>
+                                @Html.ActionLink("[ADD New Product]", "AddNewProduct", "AdminPanel", null, new {style = "color:white" })
+                            </div>
+                            <!-- End Box Head -->
+                            <!-- Table -->
+                            <div class="table">
+                                <table style="width:100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th width="13"></th>
+                                        <th style="text-align:center">Title</th>
+                                        <th style="text-align:center">Processor Type</th>
+                                        <th style="text-align:center">RAM</th>
+                                        <th style="text-align:center">Price</th>
+                                        <th width="110" class="ac" style="text-align:center">Content Control</th>
+                                    </tr>
+                                    @foreach (Product item in Model)
+                                    {
+                                        if (a % 2 == 0)
+                                        {
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    @foreach (var img in item.ImgUrls)
+                                                    {
+                                                        <img src=@Url.Content(img) style="height:30px;width:30px;" />
+                                                        break;
+                                                    }
+                                                </td>
+
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(m => item.Title)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.ProcessorType)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.RAM)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.Price)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.ActionLink("Edit", "Edit", "ProductsManagment", new { id = item.Id }, null) |
+                                                    @Html.ActionLink("Details", "Details", "ProductsManagment", new { id = item.Id }, null) |
+                                                    @Html.ActionLink("Delete", "Delete", "ProductsManagment", new { id = item.Id }, null)
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr class="odd">
+                                                <td style="text-align:center">
+                                                    @foreach (var img in item.ImgUrls)
+                                                    {
+                                                        <img src=@Url.Content(img) style="height:30px;width:30px;" />
+                                                        break;
+                                                    }
+                                                </td>
+
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(m => item.Title)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.ProcessorType)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.RAM)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.DisplayFor(modelItem => item.Price)
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @Html.ActionLink("Edit", "Edit", "ProductsManagment", new { id = item.Id }, null) |
+                                                    @Html.ActionLink("Details", "Details", "ProductsManagment", new { id = item.Id }, null) |
+                                                    @Html.ActionLink("Delete", "Delete", "ProductsManagment", new { id = item.Id }, null)
+                                                </td>
+                                            </tr>
+                                        }
+                                        a++;
+                                    }
+                                </table>
+
+
+
+                               
+
+                            </div>
+                            <!-- Table -->
+
+                        </div>
+                        <!-- End Box -->
+                        <!-- Box -->
+                        <!-- End Box -->
+
+                    </div>
+                    <!-- End Content -->
+                    <!-- Sidebar -->
+                    <!-- End Sidebar -->
+
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <!-- Main -->
+            </div>
+        </div>
+
+      
+</div>
+    <div id="footer">
+        <div class="shell">
+            <span class="left">&copy; 2016 - Janjua Traders </span>
+            <span class="right">
+
+            </span>
+        </div>
+    </div>
+</body>
+</html>
+
+

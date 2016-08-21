@@ -1,0 +1,37 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Notifications>
+    @{
+        Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+        ViewBag.Title = "Notifications";
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Notifications</title>
+
+        <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+        <link href="~/Content/Main.css" rel="stylesheet" />
+        <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+
+    </head>
+    <body>
+
+        <div class="container" style="margin-top:10px;">
+
+            <div id="article">
+                <div class="workingArea">
+@foreach (Notifications n in Model)
+{
+    <div style="font-family: Verdana;font-size:14px;margin:5px;background-color:#fbecec;height:20px;padding:4px;">
+        <div style="float:left"><b> @n.Description</b> </div>
+        <div style="margin-left:200px;float:right">@Html.ActionLink("Delete", "DeleteNotification", "AdminPanel", new { id = n.Id }, new { style="color:blue"})</div>
+    </div>
+}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

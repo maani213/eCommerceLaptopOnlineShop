@@ -1,0 +1,255 @@
+﻿@using OnlineShop.ViewModels.Product
+@model ProductDetail
+@{
+    Layout = "~/Views/AdminPanel/TemplateLayout.cshtml";
+    ViewBag.Title = "Admin-Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Microsoft.jQuery.Unobtrusive.Ajax.2.0.30506.0/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+
+    
+
+
+</head>
+<body>
+    <div>
+
+        <div class="container" style="width: 980px; border: thin thick; margin-bottom: 20px;margin-top:10px;">
+            
+            <h3>Product Details</h3>
+            <div class="row">
+                <div class="col-lg-6" style="border:double thin;border-color:#f2e8e8;width:45%;margin-left:30px;">
+                    <div style="border:double thin;border-color:#f2e8e8;width:90%;margin:5%;">
+                        @{
+                            int a = 0;
+                            foreach (string url in Model.ImgUrls)
+                            {
+                                if (a == 0)
+                                {
+                                    <div style="padding:10px;">
+                                        <img src=@Url.Content(url) class="~/img-responsive" style="height:80%;width:80%;" />
+                                    </div>
+                                }
+
+                                if (a == 1)
+                                {
+                                    <div class="col-lg-3 col-sm-12" style="border: double thin; border-color: #e5dcdc; margin: 10px;padding:5px;">
+                                        <img src=@Url.Content(url) class="imglist" />
+                                    </div>
+                                }
+
+                                if (a == 2)
+                                {
+                                    <div class="col-lg-3 col-sm-12" style="border: double thin; border-color: #e5dcdc; margin: 10px; padding: 5px;">
+                                        <img src=@Url.Content(url) class="imglist" />
+                                    </div>
+                                }
+
+                                a++;
+
+                            }
+                        }
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <p style="font-style:oblique;font-size:20px;" id=@Model.Id>
+
+                        <b>@Model.Description  @Model.ProcessorType @Model.ScreenSize</b>
+                        <div class="xyz">
+                            <div style=" float:left;width:50%">
+                                Model:
+                            </div>
+                            <div style="">
+                                e6420
+                            </div>
+                        </div>
+                        <div class="xyz">
+                            <div style=" float:left;width:50%">
+                                Manufecturer:
+                            </div>
+                            <div style="">
+                                @Model.category
+                            </div>
+                        </div>
+                        <div class="xyz">
+                            <div style=" float:left;width:50%">
+                                Availability:
+                            </div>
+                            <div style="">
+                                @Model.Status
+                            </div>
+                        </div>
+
+
+                    </p>
+
+                    <div style="width: 420px; height: 150px; padding: 10px; border: double thin; border-color: #f2e8e8; background-color: #f2e8e8;">
+                        <div class="price"><h4>RS @Model.Price /- PKR</h4></div>
+
+                        
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+        <div class="row" style="background-color:#e5dcdc;">
+            <div class="col-lg-6 col-sm-12">
+                Hard Drive
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                @Model.HardDrive
+            </div>
+        </div>
+        <div class="row" style="background-color:white;">
+            <div class="col-lg-6 col-sm-12">
+                Dedicated Graphic memory
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                @Model.DedicatedGraphicMemory
+            </div>
+        </div>
+        <div class="row" style="background-color: #e5dcdc;">
+            <div class="col-lg-6 col-sm-12">
+                Screen Size
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                @Model.ScreenSize
+            </div>
+        </div>
+
+
+
+        <div class="row" style="background-color:white;">
+            <div class="col-lg-6 col-sm-12">
+                Network
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                Wifi Support
+            </div>
+        </div>
+
+        <div class="row" style="background-color:#e5dcdc;">
+            <div class="col-lg-6 col-sm-12">
+                WEBCAM
+            </div>
+            <div class="col-lg-6 col-sm-12">
+
+                @if (@Model.WebCam)
+                {
+                    <div>
+                        not installed
+                    </div>
+                }
+                else
+                {
+                    <div>Installed</div>
+                }
+            </div>
+        </div>
+        <div class="row" style="background-color:white;">
+            <div class="col-lg-6 col-sm-12">
+                RAM
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                @Model.RAM
+            </div>
+        </div>
+
+
+        @{
+            Html.RenderAction("GetReviews", "Product", @Model.Id);
+        }
+
+
+        <div id="ReiviewData"></div>
+        <div style="margin-bottom:5px;margin-top:8px;margin-bottom:8px;">
+
+
+            
+            <form action="@Url.Action("PostReviews", "Product")" method="post" id="reviewForm">
+
+                <div style="width: 300px;margin-top:10px;">
+                    <label>Your Name:</label>
+                    <div>
+                        <input type="text" id="review" name="username" style="border-radius:2px;width:300px;border:thick thin" class="form-control" />
+                    </div>
+
+
+                    <label>Your Review:</label>
+                    <div>
+                        <textarea class="form-control" id="review" name="review" style="border-radius:2px;width:300px;height:130px;"></textarea>
+                    </div>
+
+                    <input type="hidden" value="@DateTime.Now" name="time" />
+                    <input type="hidden" value="@Model.Id" name="id" />
+                    <input type="hidden" id="ForCount" name="c"/>
+                    <div style="margin-bottom:5px;margin-top:5px;">
+                        <input id="SubBtn" type="submit" value="Submit" class="btn btn-info" style="width:90px;float:right" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+   
+</body>
+</html>
+
+<script>
+
+    $(document).ready(function () {
+        var x = $('#count').html();
+        $('#ForCount').val(x);
+        $('#count').hide();
+
+    });
+    $('#reviewForm').submit(function (evt) {
+        evt.preventDefault();
+        //alert("yes");
+        var $this = $(this);
+        var frmValues = $this.serialize();
+        $form = $(this)
+        $.ajax({
+            type: $this.attr('method'),
+            url: $this.attr('action'),
+            data: frmValues,
+            datatype:"json",
+            success: function (data) {
+                $('#noreview').hide(function () { 'slow', 1000});
+                // alert(data.ReviewText);
+                var txt = data.ReviewText;
+                var name = data.UserId;
+                var time = data.time;
+                var count = data.count;
+               // alert(txt);
+                var data1 = '<div class="row" style="background-color:#f5f0f0;margin-top:3px;"><div id="img" style="float: left; background-color: white; margin: 3px; border-radius: 15px; margin-right: 10px; "><img src="~/images/User-icon.png" style="height:40px;width:40px;"/></div><div id="username" style="font-size: 15px; margin: 3px;font-family:Verdana;margin-top:6px;">' +name +' | Today </div><div id="reviewText" style="margin-top:2px;margin-left:15px;font-size:15px;font-family:Verdana;color:#808080">' + txt + '</div></div>'
+                var data2 = '<h4> Reviews('+count+')</h4>';
+                $('#ReiviewData').append(data1);
+                $('#RCount').replaceWith(data2);
+                                 
+                //alert(data.ReviewText)
+            } 
+            });
+            
+        });
+
+</script>
+
+    
+   

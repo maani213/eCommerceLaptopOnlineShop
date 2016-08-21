@@ -1,0 +1,263 @@
+﻿@using Online_Shop.Application.Entities
+@model UserDetail
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "Register";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> </title>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Contentts/CSS/form.css" rel="stylesheet" />
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <link href="~/Contentts/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <link href="~/Contentts/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Contentts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+
+    <script>
+        // just for the demos, avoids form submit
+        
+       
+    </script>
+    <script>
+        $(document).ready(function () {
+            jQuery.validator.setDefaults({
+                debug: true,
+                success: "valid"
+            });
+            $('#SubmitBtn').click(function (evt) {
+              
+               if ($('#fname').val() == "") {
+                    evt.preventDefault();
+                    $('#fnamev').html("Please enter First Name");
+                    
+
+                }
+
+                if ($('#lname').val() == "") {
+                    evt.preventDefault();
+                    $('#lnamev').html("Please enter Last Name");
+                }
+
+
+                
+                if ($('#email').val() == "") {
+                    evt.preventDefault();
+                    $('#emailv').html("Please enter email address");
+                }
+               
+
+                if ($('#dob').val() == "") {
+                    evt.preventDefault();
+                    $('#dobv').html("Please enter Date of Birth");
+                }
+
+                if ($('#contact').val() == "") {
+                    evt.preventDefault();
+                    $('#contactv').html("Please enter Contact Number");
+                }
+
+                if ($('#sq').val() == "") {
+                    evt.preventDefault();
+                    $('#sqv').html("Please enter your Security Question");
+                }
+
+                if ($('#address').val() == "") {
+                    evt.preventDefault();
+                    $('#addressv').html("Please enter your address");
+                }
+
+                if ($('#country').val() == "") {
+                    evt.preventDefault();
+                    $('#countryv').html("Please enter Country Name");
+                }
+
+                if ($('#city').val() == "") {
+                    evt.preventDefault();
+                    $('#cityv').html("Please enter City Name");
+                }
+
+                if ($('#answer').val() == "") {
+                    evt.preventDefault();
+                    $('#answerv').html("Please enter Your Answer to security Question");
+                }
+
+            });
+        })
+
+        $(function () {
+
+            $("#dob").datepicker(
+            {
+                dateFormat:"yy-mm-dd"
+            });
+            //$("#dob").datepicker("show");
+        });
+    </script>
+
+    <script>
+
+        function show2(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        };
+
+    </script>
+
+
+</head>
+<body><div class="container" style="width:980px;margin-bottom:0px;">
+
+
+    @using (Html.BeginForm("RegisterUser", "Users", FormMethod.Post, new { id = "CreatUser", role = "form", enctype = "multipart/form-data", style="margin-bottom:20px;"}))
+    {
+        
+            <div style="float:left;width:49%;margin-right:10px;">
+                <h3>Personla details</h3>
+
+
+                <div style="width:100%">
+                    <div class="form-group" style="float:left">
+                        <div accesskey="f"><span class="accessKeyStyle">F</span>irst Name</div>
+                        @Html.TextBoxFor(m => m.FName, new { @class = "form-control", style = "width:90%;margin-right:6px;", id = "fname" })<div style="color:red;" id="fn"></div>
+                        <div style="color:red" id="fnamev">@Html.ValidationMessageFor(m => m.FName)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div accesskey="l"><span class="accessKeyStyle">L</span>ast Name</div>
+                        @Html.TextBoxFor(m => m.LName, new { @class = "form-control", style = "width:37%;", id = "lname" })<div style="color:red;" id="ln"></div>
+                        <div style="color:red" id="lnamev">@Html.ValidationMessageFor(m => m.LName)</div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="e"><span class="accessKeyStyle">E</span>mail</div>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "width:80%;", id = "email" })<div style="color:red;" id="e"></div>
+                    <div style="color:red" id="emailv">@Html.ValidationMessageFor(m => m.Email)</div>
+
+                </div>
+                <div style="width:100%">
+
+
+                </div>
+                <div class="form-group">
+                    <div accesskey="d"><span class="accessKeyStyle">D</span>ate of Birth</div>
+                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", style = "width:80%;", id = "dob" })<div style="color:red;" id="data"></div>
+                    <div style="color:red" id="dobv">@Html.ValidationMessageFor(m => m.DOB)</div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <div accesskey="c"><span class="accessKeyStyle">C</span>ontact</div>
+                    @Html.TextBoxFor(m => m.Contact, new { @class = "form-control", style = "width:80%;", id = "contact" })<div style="color:red;" id="c"></div>
+                    <div style="color:red" id="contact">@Html.ValidationMessageFor(m => m.Contact)</div>
+
+                </div>
+
+            <div class="form-group">
+                <div accesskey="g"><span class="accessKeyStyle">G</span>ender</div>
+                <div>
+                    @Html.RadioButtonFor(m => m.Gender, "Male", "Male")<label>Male</label>
+                    @Html.RadioButtonFor(m => m.Gender, "Femal", "Female")<label>Female</label>
+                    @Html.RadioButtonFor(m => m.Gender, "others", "others")<label>others</label>
+                </div>
+
+            </div>
+                <div style="color:red">@Html.ValidationMessageFor(m => m.Gender)</div>
+          
+
+            <div class="form-group">
+                <div accesskey="a"><span class="accessKeyStyle">I</span>mage</div>
+                <div style="height: 120px; width: 100px; border: double thin;">
+                    <img id="user_img"
+                         height="120"
+                         width="100" />
+                </div>
+                <input type="file" name="photo3" onchange="show2(this)" />
+            </div>
+                <div style="color:red">@Html.ValidationMessageFor(m => m.imgUrl) </div>
+
+        </div>
+        <div style="margin-left:10px;float:left;">
+            <h3>Account details</h3>
+
+            <div style="width:100%;height:auto">
+                <div class="form-group" style="float:left">
+                    <div accesskey="u"><span class="accessKeyStyle">U</span>ser Name</div>
+                    @Html.TextBoxFor(m => m.UserId, new { @class = "form-control", style = "width:97%", id = "uname", value = "null" })<div style="color:red;" id="un"></div>
+                    <div style="color:red" id="unamev">@Html.ValidationMessageFor(m => m.UserId) </div>
+                    </div>
+
+                <div class="form-group" style="float:right">
+                    <div accesskey="p"><span class="accessKeyStyle">P</span>assword</div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", style = "width:97%", id = "password", value = "" })<div style="color:red;" id="p"></div>
+                    <div style="color:red" id="passwordv">@Html.ValidationMessageFor(m => m.Password)</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div accesskey="s" ><span class="accessKeyStyle">S</span>ecurity Question</div>
+                @Html.TextBoxFor(m => m.SecQuest, new { @class = "form-control", style = "width:99%;", id = "sq" })<div style="color:red;" id="sq"></div>
+                <div style="color:red" id="sqv">@Html.ValidationMessageFor(m => m.SecQuest)</div>
+
+            </div>
+
+            <div class="form-group">
+                <div accesskey="a"><span class="accessKeyStyle">A</span>nswer</div>
+                @Html.TextBoxFor(m => m.Answer, new { @class = "form-control", style = "width:99%;", id = "answer" })<div style="color:red;" id="a"></div>
+                <div style="color:red" id="answerv">@Html.ValidationMessageFor(m => m.Answer)</div>
+
+            </div>
+
+            <h3>Your Address</h3>
+            <div class="form-group">
+                <div accesskey="u"><span class="accessKeyStyle">A</span>ddress</div>
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", style = "", id = "address", value = "null" })<div style="color:red;" id="un"></div>
+                <div style="color:red" id="addressv">@Html.ValidationMessageFor(m => m.Address)</div>
+
+            </div>
+            <div class="form-group">
+                <div accesskey="u"><span class="accessKeyStyle">C</span>ountry</div>
+                @Html.TextBoxFor(m => m.country, new { @class = "form-control", style = "", id = "country", value = "null" })<div style="color:red;" id="un"></div>
+                <div style="color:red" id="countryv">@Html.ValidationMessageFor(m => m.country)</div>
+
+            </div>
+            <div class="form-group">
+                <div accesskey="u"><span class="accessKeyStyle">C</span>ity</div>
+                @Html.TextBoxFor(m => m.city, new { @class = "form-control", style = "", id = "city", value = "null" })<div style="color:red;" id="un"></div>
+                <div style="color:red" id="cityv">@Html.ValidationMessageFor(m => m.city)</div>
+
+            </div>
+          
+        </div>
+       
+         
+            <div class="feildwraper" style="float:left">
+                <input id="SubmitBtn" type="submit" value="Register" class="btn btn-danger" style="margin-top:0px;" />
+                <input type="reset" value="Reset" class="btn btn-danger" />
+            </div>
+    }
+</div>
+
+    <div style="color:red" id="fnamev">@Html.ValidationMessageFor(m => m.FName)</div>
+
+</body>
+</html>
+

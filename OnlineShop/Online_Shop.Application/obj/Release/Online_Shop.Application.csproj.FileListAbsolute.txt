@@ -1,0 +1,10 @@
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\Online_Shop.Application.dll.config
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\Online_Shop.Application.dll
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\Online_Shop.Application.pdb
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\EntityFramework.dll
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\EntityFramework.SqlServer.dll
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\EntityFramework.xml
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\bin\Release\EntityFramework.SqlServer.xml
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\obj\Release\Online_Shop.Application.csprojResolveAssemblyReference.cache
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\obj\Release\Online_Shop.Application.dll
+E:\Dotnet\EVS-Project\OnlineShop\Online_Shop.Application\obj\Release\Online_Shop.Application.pdb

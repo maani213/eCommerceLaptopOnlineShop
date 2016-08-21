@@ -1,0 +1,221 @@
+﻿@using Online_Shop.Application.Entities
+@model Product
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "Add New Product";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddNewProduct</title>
+
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <link href="~/Contentts/Content/bootstrap.css" rel="stylesheet" />
+    
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+   
+
+    <script type="text/javascript">
+        function show(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        };
+        function show1(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img1').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        };
+        function show2(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img2').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>  
+
+    
+</head>
+<body>
+        <div class="container">
+
+            @using (Html.BeginForm("SaveProduct", "AdminPanel", FormMethod.Post, new { id = "CreatProductform", role = "form", enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <label for="title" accesskey="t" class="fieldLabel"><span class="accessKeyStyle">T</span>itle</label>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", style = "width:50%;", id = "title" })
+                    <div style="color:red" id="titlemsg">@Html.ValidationMessageFor(m => m.Title)</div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="description" accesskey="d"><span class="accessKeyStyle">D</span>escription</label>
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", style = "width:50%;", id = "description" })
+                    <div style="color:red" id="descriptionmsg">@Html.ValidationMessageFor(m => m.Description)</div>
+                
+                </div>
+
+
+                <div class="form-group">
+                    <label for="processortype" accesskey="p"><span class="accessKeyStyle">P</span>rocessor Type</label>
+                    @Html.TextBoxFor(m => m.ProcessorType, new { @class = "form-control", style = "width:50%;", id = "Ptype" })
+                    <div style="color:red" id="Ptypemsg">@Html.ValidationMessageFor(m => m.ProcessorType)</div>              
+                 </div>
+
+                <div class="form-group">
+                    <label for="ram" accesskey="r"><span class="accessKeyStyle">R</span>AM</label>
+                    @Html.TextBoxFor(m => m.RAM, new { @class = "form-control", style = "width:50%;", id = "ram" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.RAM)</div>
+
+                </div>
+             <div class="form-group">
+                    <label for="category" accesskey="c"><span class="accessKeyStyle">C</span>ategory</label>
+                    @Html.DropDownListFor(
+                                  m => m.categoryId,
+                                 @ViewBag.Category as IEnumerable<SelectListItem>,
+                                 "--Select Category--", new { @class = "form-control", style = "width:25%;" })
+                    @*<div style="color:red">@Html.ValidationMessageFor(m => m.categoryId)</div>*@
+                </div>
+                
+                <div class="form-group">
+                    <label for="harddrive" accesskey="h"><span class="accessKeyStyle">H</span>ard Drive</label>
+                    @Html.DropDownListFor(
+                                 m => m.OperatingSystem,
+                                 @ViewBag.OperatingSystem as List<SelectListItem>,
+                                 "--Select OS--", new { @class = "form-control", style = "width:25%;" })
+                    @*<div style="color:red">@Html.ValidationMessageFor(m => m.OperatingSystem)</div>*@
+
+                </div>
+
+                <div class="form-group">
+                    <label for="webcam"><span class="accessKeyStyle">W</span>ebCam</label>
+                    @Html.DropDownListFor(
+                                   m => m.WebCam,
+                                   @ViewBag.webcam as List<SelectListItem>,
+                                 "--Webcam--", new { @class = "form-control", style = "width:25%;" })
+                   @* <div style="color:red">@Html.ValidationMessageFor(m => m.WebCam)</div>*@
+
+                </div>
+                <div class="form-group">
+                    <label for="dedicatedgraphics"><span class="accessKeyStyle">D</span>edicated Graphic Memory</label>
+                    @Html.TextBoxFor(m => m.DedicatedGraphicMemory, new { @class = "form-control", style = "width:30%;", id = "graphic" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.DedicatedGraphicMemory)</div>
+
+                </div>
+                <div class="form-group">
+                    <label for="harddrive" accesskey="h"><span class="accessKeyStyle">H</span>ard Drive</label>
+                    @Html.TextBoxFor(m => m.HardDrive, new { @class = "form-control", style = "width:50%;", id = "harddrive" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.HardDrive)</div>
+
+                </div>
+
+               
+
+                <div class="form-group">
+                    <label for="screensize"><span class="accessKeyStyle">S</span>creenSize</label>
+                    @Html.TextBoxFor(m => m.ScreenSize, new { @class = "form-control", style = "width:30%;", id = "screesize" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.ScreenSize)</div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="screensize"><span class="accessKeyStyle">P</span>rice</label>
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control", style = "width:30%;", id = "price" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Price)</div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="screensize"><span class="accessKeyStyle">S</span>tatus</label>
+                    @Html.TextBoxFor(m => m.Status, new { @class = "form-control", style = "width:30%;", id = "status" })
+                    <div style="color:red">@Html.ValidationMessageFor(m => m.Status)</div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="images"><span class="accessKeyStyle">I</span>mages</label>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div style="height: 120px; width: 100px; border: double thin;">
+                                <img id="user_img"
+                                     height="100"
+                                     width="90"
+                                      />
+                            </div>
+                            <input type="file" name="photo1" onchange="show(this)" />
+                        </div>
+                       
+                        <div class="col-lg-2">
+                            <div style="height: 120px; width: 100px; border: double thin; ">
+                                <img id="user_img1"
+                                     height="100"
+                                     width="90"
+                                     />
+                            </div>
+                            <input type="file" name="photo2" onchange="show1(this)" />
+                        </div>
+                      
+                        <div class ="col-lg-2">
+                            <div style="height: 120px; width: 100px; border: double thin;">
+                                <img id="user_img2"
+                                     height="100"
+                                     width="90"
+                                      />
+                            </div>
+                            <input type="file" name="photo3" onchange="show2(this)" />
+                        </div>
+                    </div>
+                   
+                </div>
+                <div>
+                    <input type="submit" value="SaveProduct" id="SubBtn" name="BtnSubmit" class="btn-info" />
+
+                    <input type="button" value="Reset" name="BtnReset" onclick="Reset()" class="btn-danger" />
+
+                    <input type="submit" value="Cancel" name="BtnSubmit" class="btn-danger" />
+                </div>
+            }
+        </div>
+</body>
+</html>
+<script>
+
+    $(document).ready(function () {
+        alert("123");
+        $("#SubBtn").click(function (evt) {
+            alert("123");
+            if ($('#title').val() == "") {
+                evt.preventDefault();
+                $('#titlemsg').html("Please Enter Product title");
+            };
+
+            if ($('#description').val() == "") {
+                evt.preventDefault();
+                $('#descriptionmsg').html("Please Enter Product Dexcription");
+            };
+
+            if ($('#Ptype').val() == "") {
+                evt.preventDefault();
+                $('#Ptypemsg').html("Please Enter Product Processor Type");
+            };
+        
+        })
+    });
+
+
+   
+</script>

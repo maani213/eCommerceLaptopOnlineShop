@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+        
+    <link href="~/Contentts/CSS/css/style.css" rel="stylesheet" />
+ 
+
+
+</head>
+    <body>
+        <!-- Header -->
+        <div style="width:1020px;margin-left:180px;">
+            <div id="header">
+                <div class="shell">
+                    <!-- Logo + Top Nav -->
+                    <div id="top">
+                        <h1 style="color:white;">Online Shop</h1>
+                        <div id="top-navigation">
+                            Welcome <a href="#"><strong>Administrator</strong></a>
+                            <span>|</span>
+                            @Html.ActionLink("LOGOUT", "LogOut", "Authentication", null, new { style = "color:white" })
+                        </div>
+                    </div>
+                    <!-- End Logo + Top Nav -->
+                    <!-- Main Nav -->
+                    <div id="navigation">
+                        <ul>
+
+                            <li> <span> @Html.ActionLink("Dashboard", "Index", "AdminPanel", null, new { style = "width:auto" })</span></li>
+                            <li><span>@Html.ActionLink("REGISTERED USERS", "AllUsers", "Users", null, new { style = "width:auto" })</span></li>
+                            <li><span>@Html.ActionLink("Orders", "AllOrders", "AdminPanel", null, new { style = "width:auto" })</span></li>
+                           @* <li><span>@Html.ActionLink("All Categories", "ShowAllCategories", "AdminPanel", null, new {style = "" })</span></li> *@
+                            <li><span><a href="#">All Categories</a></span></li>
+
+                            <li><span>@Html.ActionLink("Home Page", "Index", "Product", null, new { style = "" })</span></li>
+                            <li><span>@Html.ActionLink("Notifications", "GetNotifications", "AdminPanel", null, new { style = "" })</span></li>
+
+                         </ul>
+                    </div>
+                    <div>
+                        <!-- End Main Nav -->
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <!-- End Header -->
+            <!-- Container -->
+         
+            <!-- End Container -->
+            <!-- Footer -->
+           
+            <!-- End Footer -->
+        </div>
+      
+    </body>
+</html>

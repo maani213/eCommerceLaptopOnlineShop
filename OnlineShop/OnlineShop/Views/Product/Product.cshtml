@@ -1,0 +1,88 @@
+﻿@using Online_Shop.Application.Entities
+@model IEnumerable<Product>
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "Product-Search";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   <title></title>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div> 
+
+
+        <div class="container" style="width: 980px; border: thin thick; margin-bottom: 60px;">
+
+            <div style="float:left;width:80%;">
+                <b> Products with Key Word " @ViewBag.name "...</b>
+                <div class="row" style="margin-bottom:10px;">
+                    
+                        
+                   @foreach(Product item in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-3 col-sm-6 split1" style="margin-bottom:10px;">
+                            <div class="content1">
+                                <div style="border-bottom: double thin; border-color: #f2e8e8; padding: 2px; height: 40%;">
+                                    @{
+                        foreach (var i in item.ImgUrls)
+                        {
+                            <img src=@Url.Content(i) class="imgsize" />
+                            break;
+                        }
+                                    }
+                                </div>
+
+                                <div class="title">
+                                    Laptop
+                                </div>
+                                <div class="specs">
+                                    @Html.ActionLink(@item.Title, "Details", "ProductsManagment", new { id = item.Id }, new { style = "color:black;" })<br />
+                                    @item.ProcessorType @item.RAM @item.HardDrive
+
+                                    <div style="align-items:center">@item.ScreenSize</div>
+                                </div>
+                                <div class="price" id=@item.Id>
+                                    @item.Price PKR
+                                </div>
+                                @*<div class="addcart btn btn-danger">
+
+                                @*Ajax.ActionLink("AD TO CART", "AddToCart", "ShoppingCart", new { id = item.Id }, null, new AjaxOptions { OnSuccess = "handleUpdate"})*@
+                                @*<button class="addcart btn btn-danger"></button>*@
+                                <div id="@item.Id" class="class123">
+
+
+                                    @Ajax.ActionLink(
+                                        linkText: "ADD TO CART",
+                                        actionName: "AddToCart",
+                                        controllerName: "ShoppingCart", routeValues: new { Id = item.Id },
+                                        ajaxOptions: new AjaxOptions { HttpMethod = "post", UpdateTargetId = "summary", InsertionMode = InsertionMode.Replace, OnSuccess = "Process" }, htmlAttributes: new { style = "color:white", @class = "addcart btn btn-danger" })
+
+
+
+                                </div>
+                                @*</div>*@
+                            </div>
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+
+           
+        </div>
+
+
+    </div>
+</body>
+</html>

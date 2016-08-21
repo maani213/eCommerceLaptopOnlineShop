@@ -1,0 +1,36 @@
+﻿@model int
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "CheckOut Process";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Complete</title>
+
+    <link href="~/Contentts/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <script src="~/Contentts/Microsoft.jQuery.Unobtrusive.Validation.2.0.30506.0/Content/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Contentts/Microsoft.jQuery.Unobtrusive.Ajax.2.0.30506.0/Content/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+</head>
+<body>
+    <div style="margin-bottom:200px;"> 
+        <h3>Check out complete</h3>
+        <hr />
+        <p style="color:#4cff00;font-size:30px;">
+            Thanks for shoping..! your Order number is: @Model
+        </p>
+
+        <p style="color:black;font-size:20px;">
+            How about shopping for some more products in our @Html.ActionLink("Home", "Index", "Product") ?
+        </p>
+    </div>
+</body>
+</html>

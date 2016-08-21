@@ -1,0 +1,64 @@
+﻿@using OnlineShop.Models.UserManagment
+@model LogInModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Contentts/CSS/form.css" rel="stylesheet" />
+    <link href="~/Contentts/CSS/Sheet.css" rel="stylesheet" />
+    <link href="~/Contentts/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Contentts/Scripts/bootstrap.js"></script>
+    <script src="~/Contentts/Scripts/jquery-2.1.4.js"></script>
+</head>
+<body style="background-color:white">
+    @{
+        string x = @ViewBag.Url;
+    }
+    @ViewBag.Url
+    <div class="container" style="width:980px;margin-bottom:0px;">
+       
+        <div style="align-content: center; width: 980px;margin-bottom:100px;margin-left:150px;">
+            <h3>Login</h3>
+            @Html.ValidationMessage("CredentialError", new { style = "color:red" })
+            @using (Html.BeginForm("DoLogin", "Authentication", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <div accesskey="u"><span class="accessKeyStyle">U</span>ser Name</div>
+                    @Html.TextBoxFor(m => m.UserId, new { @class = "form-control", style = "width:50%;",value="" })
+                   @* <div style="color:red">@Html.ValidationMessageFor(m => m.UserId)</div>*@
+
+                </div>
+
+                <div class="form-group">
+                    <div accesskey="p"><span class="accessKeyStyle">P</span>assword</div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", style = "width:50%;", value = "" })
+                   @* <div style="color:red">@Html.ValidationMessageFor(m => m.Password)</div>*@
+
+
+                </div>
+
+               
+                                @Html.Hidden("returnUrl",x);
+                <div>
+                    <input type="submit" value="Login" class="btn btn-danger" />
+                    <input type="reset" value="Reset" class="btn btn-danger" />
+                </div>
+                @Html.CheckBoxFor(m => m.RememberMe, "Remember")<label for="rememberme" accesskey="e"><span class="accessKeyStyle">R</span>emember Me</label>
+            }
+            New User?
+            @Html.ActionLink("Register yourself...", "Register", "Users", null, new { })
+
+        </div>
+    </div>
+   
+    
+</body>
+</html>

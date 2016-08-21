@@ -1,0 +1,29 @@
+﻿@model HandleErrorInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <div> 
+
+        <h2>Error</h2>
+        <p>Error...!!!
+            We're sorry, we've hit an unexpected error.
+            <a href="javascript:history.go(-1)">Click here</a>
+            if you'd like to go back and try that again.
+        <br />
+
+            <b>Information</b><br />
+
+        Error Message:@Model.Exception.Message<br />
+        </p>
+    </div>
+</body>
+</html>

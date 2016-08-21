@@ -1,0 +1,13 @@
+﻿@using OnlineShop.Models.Products
+@model QuantityModel
+
+
+@using (Ajax.BeginForm("Details", "ProductsManagment", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "summary"
+    }))
+    {
+    @Html.HiddenFor(m=>m.id)
+    }
